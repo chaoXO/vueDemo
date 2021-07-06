@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        vue基础
+    </title>
+</head>
+
+<body>
+    <div id="app" class="app2">
+        {{ message }}
+        <span> {{message}}</span>
+    </div>
+    <!-- 导入VUE生产开发环境 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script>
+        var app = new Vue({
+            // el挂载点支持：类型选择器、id选择器、class选择器
+            el: "#app",
+            // el: "div",
+            // el: ".app2",
+            data: {
+                message: "Hello VUE!"
+            }
+        })
+    </script>
+
+    <hr>
+
+    <div id="app3">
+        {{ message2 }}
+        <h2>
+            名称：{{school.name}}
+            电话：{{school.tele}}
+            <p v-html="rawhtml"></p>
+        </h2>
+        <ul>
+            <li>
+                {{campus}}
+            </li>
+            <li>
+                {{campus[0]}}
+            </li>
+            <li>
+                {{campus[1]}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app2 = new Vue({
+            el: "#app3",
+            data: {
+                message2: "大学名称",
+                // 插入原生html标签
+                rawhtml: '<span style="color: red;"> this should be red (利用v-html插入原生html标签)</span>',
+                school: {
+                    name: "中南财经政法大学",
+                    tele: "666777"
+                },
+                campus: ["南湖校区", "首义校区", "洪山区", "江夏区"]
+
+            }
+
+        })
+
+        // watch方法(放在变量变化之前)
+        // app2.$watch('message2', function (newVal, oldVal) {
+        //     console.log("新值为： " + newVal, "旧值为： " + oldVal);
+        // })
+
+        //赋值修改
+        //app2.message2 = "666999"
+
+        //实例属性用$符号来和自定义属性区分
+        //app2.$data.message2 = "1008611"
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
